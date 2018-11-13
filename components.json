@@ -1,0 +1,5 @@
+{
+  "lg-form": "./packages/lg-form/index.js",
+  "lg-form-table": "./packages/lg-form-table/index.js",
+  "button-demo": "./packages/button-demo/index.js"
+}

@@ -1,0 +1,10 @@
+build/webpack.dev.conf.js
+packages/lg-form-table/src
+/test/unit/coverage/
+node_modules
+lib
+*.sh
+*.md
+*.scss
+*.woff
+*.ttf
