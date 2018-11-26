@@ -19,9 +19,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     // chunkFilename: '[id].js',
     library: {
       root: 'Lgui',
-      commonjs: 'lgui-public-components',
+      commonjs: 'lgui-public-components'
     },
-    libraryTarget: 'umd'  
+    libraryTarget: 'umd'
     // umdNamedDefine: true
   },
   module: {
@@ -38,7 +38,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       commonjs2: 'vue',
       amd: 'vue'
     }
-  },  
+  },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
