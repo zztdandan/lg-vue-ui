@@ -15,11 +15,14 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
-    filename: 'index.js',
-    chunkFilename: '[id].js',
-    libraryTarget: 'umd',
-    library: 'LIUGANG',
-    umdNamedDefine: true
+    filename: 'lgui.min.js',
+    // chunkFilename: '[id].js',
+    library: {
+      root: 'Lgui',
+      commonjs: 'lgui-public-components',
+    },
+    libraryTarget: 'umd'  
+    // umdNamedDefine: true
   },
   module: {
     rules: utils.styleLoaders({
@@ -28,7 +31,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       usePostCSS: true
     })
   },
-  devtool: config.build.productionSourceMap ? config.build.devtool : false,
   externals: {
     vue: {
       root: 'Vue',
@@ -36,7 +38,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       commonjs2: 'vue',
       amd: 'vue'
     }
-  },
+  },  
+  devtool: config.build.productionSourceMap ? config.build.devtool : false,
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({

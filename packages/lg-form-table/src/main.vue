@@ -15,9 +15,9 @@
       :submitBtnText="formOptions.submitBtnText"
       :resetBtnText="formOptions.resetBtnText"/>
 
-    <slot name="form" :loading="loading" :search="searchHandler" />
+    <slot name="form" :loading="loading" :search="searchHandler"/>
 
-    <slot />
+    <slot/>
 
     <el-table v-loading.lock="loading"
       ref="table"
@@ -33,7 +33,7 @@
       :current-row-key="currentRowKey"
       :row-class-name="rowClassName"
       :row-style="rowStyle"
-      :row-ket="rowKey"
+      :row-key="rowKey"
       :empty-text="emptyText"
       :default-expand-all="defaultExpandAll"
       :expand-row-keys="expandRowKeys"
@@ -107,7 +107,7 @@
         </template>
       </el-table-column>
 
-      <slot name="append" />
+      <slot name="append"/>
 
     </el-table>
 

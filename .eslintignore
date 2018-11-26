@@ -1,5 +1,7 @@
 build/webpack.dev.conf.js
 packages/lg-form-table/src
+packages/lg-export-excel/src
+packages/lg-import-excel/src
 /test/unit/coverage/
 node_modules
 lib

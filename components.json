@@ -1,5 +1,7 @@
 {
+  "button-demo": "./packages/button-demo/index.js",
   "lg-form": "./packages/lg-form/index.js",
   "lg-form-table": "./packages/lg-form-table/index.js",
-  "button-demo": "./packages/button-demo/index.js"
+  "lg-export-excel": "./packages/lg-export-excel/index.js",
+  "lg-import-excel": "./packages/lg-import-excel/index.js"
 }

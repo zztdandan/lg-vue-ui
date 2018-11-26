@@ -32,9 +32,7 @@ module.exports = {
       '@': resolve('examples'),
       'vue$': 'vue/dist/vue.esm.js',
       'packages': resolve('packages'),
-      'lg-vue-ui': path.resolve(__dirname, '../'),
-      '@mixins': resolve('src/mixins'),
-      '@utils': resolve('src/utils')
+      'lg-vue-ui': path.resolve(__dirname, '../')
     }
   },
   module: {
@@ -92,7 +90,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('packages'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('examples'), resolve('packages'), resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

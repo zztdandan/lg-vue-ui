@@ -28,7 +28,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '{{version}}',
   install,
 {{list}}
 };
@@ -59,7 +58,6 @@ ComponentNames.forEach(name => {
 var template = render(MAIN_TEMPLATE, {
   include: includeComponentTemplate.join(endOfLine),
   install: installTemplate.join(',' + endOfLine),
-  version: process.env.VERSION || require('../../package.json').version,
   list: listTemplate.join(',' + endOfLine)
 });
 

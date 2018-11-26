@@ -16,12 +16,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   entry: {
     app: './examples/main.js'
   },
-  output: {
-    path: path.resolve(__dirname, '../examples/dist/'),
-    publicPath: config.dev.assetsPublicPath,
-    filename: '[name].js',
-    chunkFilename: '[name].js'
-  },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
