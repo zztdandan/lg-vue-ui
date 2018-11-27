@@ -1,11 +1,12 @@
 
 export const formProps = {
+  // 统一设置控件大小
   size: {
     type: String,
     default: '',
     validator: sizeValidator
   },
-  showResetBtn: {
+  disabled: {
     type: Boolean,
     default: false
   },
@@ -18,8 +19,8 @@ export const formProps = {
     default: false
   },
   labelWidth: Number,
+  labelPosition: String,
   itemWidth: Number,
-  submitHandler: Function,
   submitLoading: {
     type: Boolean,
     default: false
@@ -28,10 +29,16 @@ export const formProps = {
     type: String,
     default: '查询'
   },
+  submitHandler: Function,  
+  showResetBtn: {
+    type: Boolean,
+    default: false
+  },
   resetBtnText: {
     type: String,
     default: '重置'
   },
+  btnBlank: Number,
   forms: {
     type: Array,
     required: true
@@ -46,12 +53,3 @@ function sizeValidator(value) {
   }
   return valid;
 }
-
-// function itemTypeValidator(value) {
-//   const methodTypes = ['input', 'select', 'date', 'daterange'];
-//   const valid = methodTypes.indexOf(value.toLowerCase()) !== -1
-//   if (!valid) {
-//     throw new Error(`ItemType must be one of ['input', 'select', 'date', 'daterange']`)
-//   }
-//   return valid
-// }

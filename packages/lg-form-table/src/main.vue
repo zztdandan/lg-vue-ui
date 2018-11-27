@@ -3,15 +3,18 @@
   	<lg-form
       v-if="formOptions"
       ref="searchForm"
+      :disabled="formOptions.disabled"
       :forms="formOptions.forms"
       :size="formOptions.size"
       :fuzzy="formOptions.fuzzy"
       :inline="formOptions.inline"
       :label-width="formOptions.labelWidth"
+      :label-position="formOptions.labelPosition"
       :item-width="formOptions.itemWidth"
       :submit-handler="searchHandler"
       :submit-loading="loading"
       :showResetBtn="formOptions.showResetBtn"
+      :btnBlank="formOptions.btnBlank"
       :submitBtnText="formOptions.submitBtnText"
       :resetBtnText="formOptions.resetBtnText"/>
 
@@ -22,11 +25,11 @@
     <el-table v-loading.lock="loading"
       ref="table"
       :data="tableData"
-      :border="border"
-      :size="size"
-      :stripe="stripe"
       :height="height"
       :max-height="maxHeight"
+      :stripe="stripe"      
+      :border="border"
+      :size="size"
       :fit="fit"
       :show-header="showHeader"
       :highlight-current-row="highlightCurrentRow"
@@ -231,6 +234,7 @@ export default {
         this.tableData = this.dataFilter(cacheLocalData);
       }
     },
+    // 远程请求，按页加载
     fetchHandler(formParams = {}) {
       this.loading = true;
       let { fetch, method, url, $axios, headers,
