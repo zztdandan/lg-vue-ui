@@ -75,7 +75,7 @@ export default {
           // const tHeader = ['name', 'province', 'city', 'address', 'date'];
           if(this.data) {
             tHeader = Object.keys(this.data[0]);
-          }         
+          }
         }
         // const filterVal = ['name', 'province', 'city', 'address', 'date'];
         // 取出值

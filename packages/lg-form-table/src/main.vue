@@ -65,12 +65,13 @@
 
       <slot name="prepend"/>
 
+      <el-table-column type="index" width="50"></el-table-column>
       <el-table-column
         v-for="(column, columnIndex) in columns" :key="columnIndex"
         :column-key="column.columnKey"
         :prop="column.prop"
         :label="column.label"
-        :width="column.minWidth ? '-' : (column.width || 140)"
+        :width="column.width"
         :minWidth="column.minWidth || column.width || 140"
         :fixed="column.fixed"
         :render-header="column.renderHeader"
@@ -93,15 +94,19 @@
         :filtered-value="column.filteredValue">
         <template slot-scope="scope" :scope="newSlotScope ? 'scope' : false ">
           <span v-if="column.filter">
+            <!--filter 转换字段的值,注意：只有注册在Vue 全局的 filter才有效-->
             {{ Vue.filter(column['filter'])(scope.row[column.prop]) }}
           </span>
           <span v-else-if="column.slotName">
+            <!--HTML 重新填充到 table 内-->
             <slot :name="column.slotName" :row="scope.row" :$index="scope.$index" />
           </span>
           <span v-else-if="column.render">
+            <!--函数转换-->
             {{ column.render(scope.row) }}
           </span>
           <span v-else-if="column.formatter">
+            <!--格式化-->
             {{ column.formatter(scope.row, scope.column, scope.row[column.prop], scope.$index) }}
           </span>
           <span v-else>
@@ -168,16 +173,20 @@ export default {
   methods: {
     handleSizeChange(size) {
       this.pagination.pageSize = size;
-      this.dataChangeHandler();
+      // this.dataChangeHandler(); 20181127
+      this.searchHandler(false);
     },
     handleCurrentChange(pageIndex) {
       this.pagination.pageIndex = pageIndex;
-      this.dataChangeHandler();
+      // this.dataChangeHandler();
+      this.searchHandler(false);
     },
+    // form表单提交
     searchHandler(resetPageIndex = true) {
       if (resetPageIndex) {
         this.pagination.pageIndex = 1;
       }
+      // 携带表单数据
       this.dataChangeHandler(arguments[0]);
     },
     dataChangeHandler() {
@@ -190,14 +199,19 @@ export default {
     },
     dataFilter(data) {
       const { pageIndex, pageSize } = this.pagination;
-      return data.filter((v, i) => {
-        return i >= (pageIndex - 1) * pageSize && i < pageIndex * pageSize;
-      });
+      // 是否分页显示
+      if (this.showPagination) {
+        return data.filter((v, i) => {
+          return i >= (pageIndex - 1) * pageSize && i < pageIndex * pageSize;
+        });
+      } else {
+        return data;
+      }
     },
     dataFilterHandler(formParams) {
-      const { cacheLocalData, params, pagination } = this;
-      const { pageIndex, pageSize } = pagination;
+      const { cacheLocalData, params } = this;
       const mergeParams = Object.assign(params, formParams);
+      // 有效条件
       const validParamKeys = Object.keys(mergeParams).filter(v => {
         return mergeParams[v] !== undefined && mergeParams[v] !== '';
       });
@@ -206,7 +220,7 @@ export default {
       if (searchForm) {
         paramFuzzy = searchForm.getParamFuzzy();
       }
-
+      // 过滤不符合条件数据
       if (validParamKeys.length > 0) {
         const validData = cacheLocalData.filter(v => {
           let valids = [];
@@ -291,9 +305,8 @@ export default {
         }
 
         if (!result || !(result instanceof Array)) {
-          throw new Error(`The result of key:${listField} is not Array.`);
           this.loading = false;
-          return false;
+          throw new Error(`The result of key:${listField} is not Array.`);
         }
 
         if (this.dataHandler) {
@@ -330,22 +343,24 @@ export default {
     loadLocalData(data) {
       const { autoLoad } = this;
       if (!data) {
-        throw new Error('When the type is \'local\', you must set attribute \'data\' and \'data\' must be a array.');
         this.showPagination = false;
-        return false;
+        throw new Error('When the type is \'local\', you must set attribute \'data\' and \'data\' must be a array.');
       }
       const cacheData = JSON.parse(JSON.stringify(data));
       this.cacheLocalData = cacheData;
       if (autoLoad) {
-        this.tableData = this.dataFilter(cacheData);
-        this.total = cacheData.length;
+        // 获得当前页数据(未过滤) 20181127
+        // this.tableData = this.dataFilter(cacheData);
+        // this.total = cacheData.length;
+        this.searchHandler(false);
       }
     }
   },
   mounted() {
-    // event: expand changed to `expand-change` in Element v2.x
+    // Element v2.x 之后 `expand`事件变为 `expand-change`（向下兼容）
     this.$refs['table'].$on('expand', (row, expanded) => this.emitEventHandler('expand', row, expanded));
     const { type, autoLoad, data, formOptions, params } = this;
+    // 后端获取数据
     if (type === 'remote' && autoLoad) {
       if (formOptions) {
         this.$refs['searchForm'].getParams((error, formParams) => {
@@ -361,6 +376,7 @@ export default {
     }
   },
   watch: {
+    // 监听props中data变化
     data: function(value) {
       this.loadLocalData(value);
     }

@@ -1,10 +1,12 @@
 <template>
   <div class="hello">
-    <img src="../assets/logo.png">
+    <!--img src="../assets/logo.png"-->
     <h1>{{ msg }}</h1>
+    <el-input v-model="input" type='password' placeholder="请输入内容"></el-input>
     <button-demo></button-demo>
-    <!--lg-form :forms='formData' :submitHandler="submit" labelPosition='left' :showResetBtn='true' :labelWidth=100 :itemWidth=400 :btnBlank=50 :disabled='false' :asterisk='false'></lg-form-->
+    <!--lg-form :forms='formData' :submitHandler="submit" labelPosition='left' :showResetBtn='true' :labelWidth=100 :itemWidth=400 :btnBlank=50 :disabled='false' :inline='true'></lg-form-->
     <lg-form-table :form-options="formObj"></lg-form-table>
+    <lg-sample-table :data="list"></lg-sample-table>
     <lg-export-excel :data="list"></lg-export-excel>
     <lg-import-excel></lg-import-excel>
   </div>
@@ -18,6 +20,7 @@ export default {
       itemType: 'input',        
       prop: 'email',
       label: '邮箱',
+      type:'password',
       size: 'small',
       rules:[
         { required: true, message: '请输入邮箱地址', trigger: 'blur' },
@@ -118,6 +121,7 @@ export default {
     }];
     let formObj = {'forms':formData, 'labelWidth':80, 'itemWidth':350, 'labelPosition':'left', 'inline':true};
     return {
+      input: '',
       flag: false,
       msg: 'Welcome to Your Vue.js App',
       formObj,
@@ -128,6 +132,114 @@ export default {
           city: '普陀区',
           address: '上海市普陀区金沙江路 1518 弄',
           date: '2016-05-03'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-02'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-04'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-01'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-02'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-04'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-01'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-02'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-04'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-01'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-02'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-04'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-01'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-02'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-04'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-01'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-02'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-04'          
+        }, {
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-01'          
         }, {
           name: '王小虎',
           province: '上海',

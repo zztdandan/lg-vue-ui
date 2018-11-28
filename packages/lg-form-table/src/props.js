@@ -1,13 +1,11 @@
 
-// import { formProps } from '../../lg-form/src/props';
-
 let props = {
   // Element UI Table attributes
   height: [String, Number],
   maxHeight: [String, Number],
-  size: String,
   stripe: Boolean,
   border: Boolean,
+  size: String,
   fit: {
     type: Boolean,
     default: true
@@ -48,12 +46,14 @@ let props = {
       return methodTypes.indexOf(value.toLowerCase()) !== -1;
     }
   },
+  // 远程请求附加头
   headers: {
     type: Object,
     default: () => {
       return {};
     }
   },
+  // 远程请求数据返回字段
   listField: {
     type: String,
     default: 'data.list'
@@ -77,7 +77,7 @@ let props = {
   },
   type: {
     type: String,
-    default: 'remote',
+    default: 'local',
     validator(value) {
       const types = ['remote', 'local'];
       const validType = types.indexOf(value) !== -1;
@@ -87,6 +87,7 @@ let props = {
       return validType;
     }
   },
+  // table数据
   data: {
     type: Array
   },
@@ -111,6 +112,7 @@ let props = {
     type: String,
     default: 'total, prev, pager, next, jumper, sizes'
   },
+  // 远程请求字段
   pageIndexKey: {
     type: String,
     default: 'pageIndex'
@@ -120,9 +122,5 @@ let props = {
     default: 'pageSize'
   }
 };
-
-// Object.keys(formProps).forEach(v => {
-//   props.formOptions[v] = formProps[v]
-// })
 
 export default props;

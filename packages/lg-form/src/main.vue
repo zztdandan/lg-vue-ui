@@ -12,6 +12,7 @@
       :label-width="form.labelWidth ? (form.labelWidth + 'px') : ''">
       <el-input v-if="form.itemType === 'input' || form.itemType === undefined"
         v-model="params[form.modelValue]"
+        :type="form.type"
         :size="form.size ? form.size : size"
         :readonly="form.readonly" :disabled="form.disabled"
         :clearable="form.clearable"
@@ -132,9 +133,9 @@ export default {
         v.modelValue = v.prop;
         if (v.itemType === 'switch') {
           params[v.prop] = !!v.default;
-        }else if (v.itemType === 'checkbox') {
+        } else if (v.itemType === 'checkbox') {
           params[v.prop] = v.default || [];
-        }else{
+        } else {
           params[v.prop] = v.default || '';
         }
 
@@ -144,9 +145,9 @@ export default {
         }
       } else if (propType === 'object' && Object.prototype.toString.call(v.prop) === '[object Array]') {
         v.prop.forEach((vv, ii) => {
-          if(v.default) {
+          if (v.default) {
             params[vv] = v.default[ii] || '';
-          }else{
+          } else {
             params[vv] = '';
           }
           if (v.format) {
@@ -159,7 +160,7 @@ export default {
       if (v.itemType === 'daterange') {
         params[datePrefix + i] = v.default || '';
         v.modelValue = datePrefix + i;
-      }else if (v.itemType === 'datetimerange') {
+      } else if (v.itemType === 'datetimerange') {
         params[dateTimePrefix + i] = v.default || '';
         v.modelValue = dateTimePrefix + i;
       }
@@ -205,12 +206,12 @@ export default {
   methods: {
     getProp(form, index) {
       const { datePrefix, dateTimePrefix } = this;
-      if(form.itemType == 'daterange') {
-        return datePrefix + index
-      }else if(form.itemType == 'datetimerange') {
-        return dateTimePrefix + index
-      }else{
-        return form.prop
+      if (form.itemType === 'daterange') {
+        return datePrefix + index;
+      } else if (form.itemType === 'datetimerange') {
+        return dateTimePrefix + index;
+      } else {
+        return form.prop;
       }
     },
     isArray(value) {
@@ -218,7 +219,7 @@ export default {
     },
     getParamFuzzy() {
       return this.fuzzyOps;
-    },    
+    },
     searchHandler() {
       this.getParams((error, params) => {
         if (!error) {
@@ -292,7 +293,7 @@ export default {
 
       this.params[startDate] = dates[0];
       this.params[endDate] = dates[1];
-    },    
+    },
     getRemoteData({ fetch, dataKey, resultField, resultHandler }) {
       fetch().then(response => {
         let result = response;

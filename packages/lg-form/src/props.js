@@ -29,7 +29,7 @@ export const formProps = {
     type: String,
     default: '查询'
   },
-  submitHandler: Function,  
+  submitHandler: Function,
   showResetBtn: {
     type: Boolean,
     default: false
