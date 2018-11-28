@@ -49,8 +49,8 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../lib'),
-    assetsSubDirectory: '/lib/',
-    assetsPublicPath: '/',
+    assetsSubDirectory: '/',
+    assetsPublicPath: '/lib/',
 
     /**
      * Source Maps

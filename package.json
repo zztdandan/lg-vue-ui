@@ -1,10 +1,15 @@
 {
   "name": "lg-vue-ui",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "A Component Library for LiuGang Steel Vue.js Program",
   "author": "qinhezhuan <574052218@qq.com>",
   "private": false,
   "main": "lib/Lgui.min.js",
+  "files": [
+    "lib",
+    "packages",
+    "src"
+  ],
   "scripts": {
     "bootstrap": "yarn || npm i",
     "build:new": "node build/bin/new.js",
@@ -16,6 +21,13 @@
     "lint": "eslint build/**/* src/**/* packages/**/* test/**/* --quiet",
     "test": "npm run lint && npm run unit"
   },
+  "keywords": [
+    "lg",
+    "lgvue",
+    "lgui"
+  ],
+  "license": "MIT",
+  "style": "lib/theme/index.css",
   "dependencies": {
     "normalize-wheel": "^1.0.1",
     "vue": "^2.5.2",

@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { export_json_to_excel } from './Export2Excel';
+
 export default {
   name: 'LgExportExcel',
   props: {
@@ -59,34 +61,32 @@ export default {
     },
     handleDownload() {
       this.dialogVisible = false;
-      import('./Export2Excel.js').then(excel => {
-        let tHeader = [];
-        let filterVal = [];
-        if(this.filter) {
-          filterVal = this.filter;
-        }else{
-          if(this.data) {
-            filterVal = Object.keys(this.data[0]);
-          }
+      let tHeader = [];
+      let filterVal = [];
+      if (this.filter) {
+        filterVal = this.filter;
+      } else {
+        if (this.data) {
+          filterVal = Object.keys(this.data[0]);
         }
-        if(this.header) {
-          tHeader = this.header;
-        }else{
-          // const tHeader = ['name', 'province', 'city', 'address', 'date'];
-          if(this.data) {
-            tHeader = Object.keys(this.data[0]);
-          }
+      }
+      if (this.header) {
+        tHeader = this.header;
+      } else {
+        // const tHeader = ['name', 'province', 'city', 'address', 'date'];
+        if (this.data) {
+          tHeader = Object.keys(this.data[0]);
         }
-        // const filterVal = ['name', 'province', 'city', 'address', 'date'];
-        // 取出值
-        const data = this.formatJson(filterVal, this.data)
-        excel.export_json_to_excel({
-          header: tHeader,
-          data: data,
-          filename: this.form.name,
-          bookType: this.form.type,
-          autoWidth: false
-        })
+      }
+      // const filterVal = ['name', 'province', 'city', 'address', 'date'];
+      // 取出值
+      const data = this.formatJson(filterVal, this.data);
+      export_json_to_excel({
+        header: tHeader,
+        data: data,
+        filename: this.form.name,
+        bookType: this.form.type,
+        autoWidth: false
       });
       this.loading = false;
     },
@@ -101,23 +101,23 @@ export default {
     formatJson(filterVal, jsonData) {
       return jsonData.map(v => filterVal.map(j => {
         if (j === 'timestamp') {
-          return this.parseTime(v[j])
+          return this.parseTime(v[j]);
         } else {
-          return v[j]
+          return v[j];
         }
-      }))
+      }));
     },
     parseTime(time, cFormat) {
       if (arguments.length === 0) {
-        return null
+        return null;
       }
-      const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
-      let date
+      const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
+      let date;
       if (typeof time === 'object') {
-        date = time
+        date = time;
       } else {
-        if (('' + time).length === 10) time = parseInt(time) * 1000
-        date = new Date(time)
+        if (('' + time).length === 10) time = parseInt(time) * 1000;
+        date = new Date(time);
       }
       const formatObj = {
         y: date.getFullYear(),
@@ -127,17 +127,17 @@ export default {
         i: date.getMinutes(),
         s: date.getSeconds(),
         a: date.getDay()
-      }
+      };
       const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
-        let value = formatObj[key]
+        let value = formatObj[key];
         // Note: getDay() returns 0 on Sunday
-        if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+        if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ]; }
         if (result.length > 0 && value < 10) {
-          value = '0' + value
+          value = '0' + value;
         }
-        return value || 0
-      })
-      return time_str
+        return value || 0;
+      });
+      return time_str;
     }
   }
 };
