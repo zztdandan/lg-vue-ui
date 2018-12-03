@@ -66,6 +66,7 @@
       <slot name="prepend"/>
 
       <el-table-column type="index" width="50"></el-table-column>
+      <el-table-column v-if="showCheckbox" type="selection" width="50"></el-table-column>
       <el-table-column
         v-for="(column, columnIndex) in columns" :key="columnIndex"
         :column-key="column.columnKey"
@@ -343,11 +344,11 @@ export default {
     loadLocalData(data) {
       const { autoLoad } = this;
       if (!data) {
-        this.showPagination = false;
-        throw new Error('When the type is \'local\', you must set attribute \'data\' and \'data\' must be a array.');
+        this.cacheLocalData = [];
+        // throw new Error('When the type is \'local\', you must set attribute \'data\' and \'data\' must be a array.');
+      } else {
+        this.cacheLocalData = JSON.parse(JSON.stringify(data));
       }
-      const cacheData = JSON.parse(JSON.stringify(data));
-      this.cacheLocalData = cacheData;
       if (autoLoad) {
         // 获得当前页数据(未过滤) 20181127
         // this.tableData = this.dataFilter(cacheData);

@@ -14,6 +14,10 @@ let props = {
     type: Boolean,
     default: true
   },
+  showCheckbox: {
+    type: Boolean,
+    default: false
+  },
   highlightCurrentRow: Boolean,
   currentRowKey: [String, Number],
   rowClassName: [String, Function],
@@ -30,7 +34,7 @@ let props = {
   // custom attributes
   tableStyle: {
     type: String,
-    default: 'width:100%;margin-top:20px;'
+    default: 'width:100%;'
   },
   fetch: {
     type: Function
@@ -105,7 +109,7 @@ let props = {
   pageSizes: {
     type: Array,
     default: () => {
-      return [20, 50, 100];
+      return [10, 20, 50, 100];
     }
   },
   paginationLayout: {

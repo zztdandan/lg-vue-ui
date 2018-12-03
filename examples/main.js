@@ -9,6 +9,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
+import eExcel from '../packages/lg-export-excel/index.js';
+Vue.use(eExcel);
+import iExcel from '../packages/lg-import-excel/index.js';
+Vue.use(iExcel);
+
 import Lgui from '../src/index.js';
 Vue.use(Lgui);
 

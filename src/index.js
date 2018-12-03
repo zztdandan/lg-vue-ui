@@ -3,8 +3,6 @@
 import ButtonDemo from '../packages/button-demo/index.js';
 import LgForm from '../packages/lg-form/index.js';
 import LgFormTable from '../packages/lg-form-table/index.js';
-import LgExportExcel from '../packages/lg-export-excel/index.js';
-import LgImportExcel from '../packages/lg-import-excel/index.js';
 import LgSampleTable from '../packages/lg-sample-table/index.js';
 import LgSimpleSearchBar from '../packages/lg-simple-search-bar/index.js';
 
@@ -12,8 +10,6 @@ const components = [
   ButtonDemo,
   LgForm,
   LgFormTable,
-  LgExportExcel,
-  LgImportExcel,
   LgSampleTable,
   LgSimpleSearchBar
 ];
@@ -34,8 +30,6 @@ export default {
   ButtonDemo,
   LgForm,
   LgFormTable,
-  LgExportExcel,
-  LgImportExcel,
   LgSampleTable,
   LgSimpleSearchBar
 };

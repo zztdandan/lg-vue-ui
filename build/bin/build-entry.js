@@ -1,4 +1,5 @@
 var Components = require('../../components.json');
+var Ignore = require('../../componentsignore.json');
 var fs = require('fs');
 var render = require('json-templater/string');
 var uppercamelcase = require('uppercamelcase');
@@ -34,25 +35,28 @@ export default {
 `;
 
 var ComponentNames = Object.keys(Components);
+var IgnoreNames = Object.keys(Ignore);
 
 var includeComponentTemplate = [];
 var installTemplate = [];
 var listTemplate = [];
 
 ComponentNames.forEach(name => {
-  var componentName = uppercamelcase(name);
+  if (IgnoreNames.indexOf(name) === -1) {
+    var componentName = uppercamelcase(name);
 
-  includeComponentTemplate.push(render(IMPORT_TEMPLATE, {
-    name: componentName,
-    package: name
-  }));
+    includeComponentTemplate.push(render(IMPORT_TEMPLATE, {
+      name: componentName,
+      package: name
+    }));
 
-  installTemplate.push(render(INSTALL_COMPONENT_TEMPLATE, {
-    name: componentName,
-    component: name
-  }));
+    installTemplate.push(render(INSTALL_COMPONENT_TEMPLATE, {
+      name: componentName,
+      component: name
+    }));
 
-  listTemplate.push(`  ${componentName}`);
+    listTemplate.push(`  ${componentName}`);
+  }
 });
 
 var template = render(MAIN_TEMPLATE, {

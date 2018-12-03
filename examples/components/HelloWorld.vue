@@ -1,12 +1,20 @@
 <template>
   <div class="hello">
-    <!--img src="../assets/logo.png"-->
     <h1>{{ msg }}</h1>
-    <el-input v-model="input" type='password' placeholder="请输入内容"></el-input>
     <button-demo></button-demo>
-    <!--lg-form :forms='formData' :submitHandler="submit" labelPosition='left' :showResetBtn='true' :labelWidth=100 :itemWidth=400 :btnBlank=50 :disabled='false' :inline='true'></lg-form-->
-    <lg-form-table :form-options="formObj"></lg-form-table>
-    <lg-sample-table :data="list"></lg-sample-table>
+    <lg-form-table :form-options="formObj" :columns="cols" :data="list" size="mini"></lg-form-table>
+    <lg-form :forms='formData' :submitHandler="submit" labelPosition='left' :showResetBtn='true' :labelWidth=100 :itemWidth=350 :btnBlank=50 :disabled='false' :inline='true'></lg-form>
+    <lg-sample-table :show-checkbox='true' :showOperations='true' :data="list" size="mini">
+      <el-table-column slot="append" width=100>
+        <template slot-scope="scope">
+          <el-popover placement="left" width="100" trigger="hover">
+            <el-button type="success" size="mini">通过</el-button>
+            <el-button type="danger" size="mini" @click="deleteRow(scope.$index, list)">删除</el-button>
+            <el-button slot="reference" size="mini">操作</el-button>
+          </el-popover>
+        </template>
+      </el-table-column>
+    </lg-sample-table>
     <lg-export-excel :data="list"></lg-export-excel>
     <lg-import-excel></lg-import-excel>
   </div>
@@ -126,6 +134,22 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       formObj,
       formData,
+      cols: [{
+        'prop': 'name',
+        'label': '名字'
+      },{
+        'prop': 'province',
+        'label': '省份'
+      },{
+        'prop': 'city',
+        'label': '城市'
+      },{
+        'prop': 'address',
+        'label': '地址'
+      },{
+        'prop': 'date',
+        'label': '日期'
+      }],
       list: [{
           name: '王小虎',
           province: '上海',
@@ -266,6 +290,9 @@ export default {
       console.log(params);
       params.url = '1234';
       console.log(this.formData);
+    },
+    deleteRow(index, rows) {
+      console.log(rows[index])
     }
   }
 };

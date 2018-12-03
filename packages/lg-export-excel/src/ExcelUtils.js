@@ -71,7 +71,7 @@ export function export_json_to_excel({
   var ws_name = "SheetJS";
   var wb = new Workbook(),
     ws = sheet_from_array_of_arrays(data);
-
+  console.log("1");
   if (autoWidth) {
     /*设置worksheet每列的最大宽度*/
     const colWidth = data.map(row => row.map(val => {
@@ -103,7 +103,7 @@ export function export_json_to_excel({
     }
     ws['!cols'] = result;
   }
-
+  console.log("12");
   /* add worksheet to workbook */
   wb.SheetNames.push(ws_name);
   wb.Sheets[ws_name] = ws;
@@ -113,7 +113,53 @@ export function export_json_to_excel({
     bookSST: false,
     type: 'binary'
   });
+  console.log("123");
   saveAs(new Blob([s2ab(wbout)], {
     type: "application/octet-stream"
   }), `${filename}.${bookType}`);
+}
+
+export function import_excel_to_json(file, callback) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    // 注册事件
+    reader.onload = e => {
+      const data = e.target.result;
+      const fixedData = fixData(data);
+      const workbook = XLSX.read(btoa(fixedData), { type: 'base64' });
+      const firstSheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[firstSheetName];
+      const header = getHeaderRow(worksheet);
+      // 如果header指定，则第一行被视为数据行; 如果header 未指定，则第一行是标题行，不被视为数据。
+      const results = XLSX.utils.sheet_to_json(worksheet);
+      callback({ header, results });
+      resolve();
+    };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function fixData(data) {
+  let o = '';
+  let l = 0;
+  const w = 10240;
+  for (; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
+  o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
+  return o;
+}
+
+function getHeaderRow(sheet) {
+  const headers = [];
+  const range = XLSX.utils.decode_range(sheet['!ref']);
+  let C;
+  const R = range.s.r;
+  /* start in the first row */
+  for (C = range.s.c; C <= range.e.c; ++C) { /* walk every column in the range */
+    const cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })];
+    /* find the cell in the first row */
+    let hdr = 'UNKNOWN ' + C; // <-- replace with your desired default
+    if (cell && cell.t) hdr = XLSX.utils.format_cell(cell);
+    headers.push(hdr);
+  }
+  return headers;
 }

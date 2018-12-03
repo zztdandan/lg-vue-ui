@@ -43,7 +43,9 @@
 
       <slot name="prepend"/>
       
-      <el-table-column type="index" width="50"></el-table-column>
+      <el-table-column type="index" width="45"></el-table-column>
+      <el-table-column v-if="showCheckbox" type="selection" width="50">
+      </el-table-column>
       <el-table-column
         v-for="(column, columnIndex) in colData" :key="columnIndex"
         :column-key="column.columnKey"
@@ -71,9 +73,9 @@
         :filter-method="column.filterMethod"
         :filtered-value="column.filteredValue">
       </el-table-column>
-
+ 
       <slot name="append"/>
-
+      
     </el-table>
 
     <div v-if="showPagination"
@@ -152,10 +154,6 @@ export default {
     },
     loadLocalData(data) {
       const { columns } = this;
-      if (!data) {
-        this.showPagination = false;
-        throw new Error('When the type is \'local\', you must set attribute \'data\' and \'data\' must be a array.');
-      }
       if (columns && columns.length > 0) {
         this.colData = columns;
       } else {
@@ -173,7 +171,12 @@ export default {
           });
         }
       }
-      this.cacheLocalData = JSON.parse(JSON.stringify(data));
+      if (!data) {
+        this.cacheLocalData = [];
+        // throw new Error('When the type is \'local\', you must set attribute \'data\' and \'data\' must be a array.');
+      } else {
+        this.cacheLocalData = JSON.parse(JSON.stringify(data));
+      }
       this.dataFilterHandler();
     }
   },

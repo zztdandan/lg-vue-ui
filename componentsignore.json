@@ -1,0 +1,4 @@
+{
+  "lg-export-excel": "./packages/lg-export-excel/index.js",
+  "lg-import-excel": "./packages/lg-import-excel/index.js"
+}

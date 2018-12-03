@@ -1,18 +1,18 @@
 <template>
   <div class="lg-simple-search-bar">
     <el-form>
-  	<el-form-item label="搜索">
-      <el-row :gutter="5">
-      <el-col :span="16">
-        <el-input v-model="searchText" :placeholder="default_holder">
-          <i class="lgui-cross" @click="handleClose" />
-        </el-input>
-      </el-col>
-      <el-col :span="8" >
-        <el-button type="primary" @click="onSubmit">查询</el-button>
-      </el-col>
-      </el-row>
-    </el-form-item>
+  	  <el-form-item label="搜索">
+        <el-row :gutter="5">
+          <el-col :span="16">
+            <el-input v-model="searchText" :placeholder="default_holder">
+              <i class="lgui-cross" @click="handleClose" />
+            </el-input>
+          </el-col>
+          <el-col :span="8" >
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+          </el-col>
+        </el-row>
+      </el-form-item>
     </el-form>
   </div>
 </template>

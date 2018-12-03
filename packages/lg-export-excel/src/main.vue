@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { export_json_to_excel } from './Export2Excel';
+import { export_json_to_excel } from './ExcelUtils';
 
 export default {
   name: 'LgExportExcel',
