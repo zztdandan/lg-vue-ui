@@ -2,7 +2,9 @@
 const path = require('path');
 const utils = require('./utils');
 const vueLoaderConfig = require('./vue-loader.conf');
+
 const striptags = require('./strip-tags');
+const slugify = require('transliteration').slugify;
 const md = require('markdown-it')();
 
 function resolve(dir) {
@@ -47,6 +49,12 @@ module.exports = {
         loader: 'vue-markdown-loader',
         options: {
           use: [
+            [require('markdown-it-anchor'), {
+              level: 2,
+              slugify: slugify,
+              permalink: true,
+              permalinkBefore: true
+            }],
             [require('markdown-it-container'), 'demo', {
               validate: function(params) {
                 return params.trim().match(/^demo\s*(.*)$/);
@@ -91,6 +99,18 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('examples'), resolve('packages'), resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader?minimize=false'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

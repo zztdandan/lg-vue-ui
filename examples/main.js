@@ -3,10 +3,13 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import './assets/less/index.less'
+
+import demoBlock from './components/demoBlock.vue';
+Vue.component('demo-block', demoBlock);
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-
 Vue.use(ElementUI);
 
 import eExcel from '../packages/lg-export-excel/index.js';

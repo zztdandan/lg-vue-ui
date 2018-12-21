@@ -18,9 +18,9 @@ export const formProps = {
     type: Boolean,
     default: false
   },
-  labelWidth: Number,
+  labelWidth: String,
   labelPosition: String,
-  itemWidth: Number,
+  itemWidth: String,
   submitLoading: {
     type: Boolean,
     default: false
@@ -39,7 +39,7 @@ export const formProps = {
     default: '重置'
   },
   btnBlank: Number,
-  forms: {
+  formItems: {
     type: Array,
     required: true
   }

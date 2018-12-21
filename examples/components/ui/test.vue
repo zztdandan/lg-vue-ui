@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="test">
     <h1>{{ msg }}</h1>
     <button-demo></button-demo>
     <lg-form-table :form-options="formObj" :columns="cols" :data="list" size="mini"></lg-form-table>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Test',
   data() {
     let formData = [{
       itemType: 'input',        
