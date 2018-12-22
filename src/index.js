@@ -5,13 +5,15 @@ import LgForm from '../packages/lg-form/index.js';
 import LgFormTable from '../packages/lg-form-table/index.js';
 import LgSampleTable from '../packages/lg-sample-table/index.js';
 import LgSimpleSearchBar from '../packages/lg-simple-search-bar/index.js';
+import LgSimpleTable from '../packages/lg-simple-table/index.js';
 
 const components = [
   ButtonDemo,
   LgForm,
   LgFormTable,
   LgSampleTable,
-  LgSimpleSearchBar
+  LgSimpleSearchBar,
+  LgSimpleTable
 ];
 
 const install = function(Vue, opts = {}) {
@@ -31,5 +33,6 @@ export default {
   LgForm,
   LgFormTable,
   LgSampleTable,
-  LgSimpleSearchBar
+  LgSimpleSearchBar,
+  LgSimpleTable
 };

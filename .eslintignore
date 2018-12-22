@@ -10,3 +10,4 @@ lib
 *.scss
 *.woff
 *.ttf
+packages/

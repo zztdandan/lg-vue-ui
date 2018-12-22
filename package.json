@@ -30,6 +30,7 @@
   "style": "lib/theme/index.css",
   "dependencies": {
     "file-saver": "^2.0.0",
+    "linqjs": "^0.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "xlsx": "^0.14.1"
@@ -114,7 +115,6 @@
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
-    "vue-markdown-loader": "1",
     "vue-markdown-loader": "1",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",

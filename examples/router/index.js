@@ -4,15 +4,20 @@ import test from '@/components/ui/test';
 import lgform from '@/components/ui/lgform';
 import lgtable from '@/components/ui/lgtable';
 import lgexcel from '@/components/ui/lgexcel';
-
+import lgsimpletable from '@/components/ui/lgsimpletable';
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    { 
+    {
       path: '/',
       redirect: '/lgform'
-    },  
+    },
+    {
+      path: '/lgsimpletable',
+      name: 'lgsimpletable',
+      component: lgsimpletable
+    },
     {
       path: '/test',
       name: 'test',

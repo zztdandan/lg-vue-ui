@@ -5,5 +5,6 @@
   "lg-export-excel": "./packages/lg-export-excel/index.js",
   "lg-import-excel": "./packages/lg-import-excel/index.js",
   "lg-sample-table": "./packages/lg-sample-table/index.js",
-  "lg-simple-search-bar": "./packages/lg-simple-search-bar/index.js"
+  "lg-simple-search-bar": "./packages/lg-simple-search-bar/index.js",
+  "lg-simple-table": "./packages/lg-simple-table/index.js"
 }
