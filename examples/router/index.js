@@ -5,6 +5,7 @@ import lgform from '@/components/ui/lgform';
 import lgtable from '@/components/ui/lgtable';
 import lgexcel from '@/components/ui/lgexcel';
 import lgsimpletable from '@/components/ui/lgsimpletable';
+import lgbuildform from '@/components/ui/lgbuildform';
 Vue.use(Router);
 
 export default new Router({
@@ -17,6 +18,11 @@ export default new Router({
       path: '/lgsimpletable',
       name: 'lgsimpletable',
       component: lgsimpletable
+    },
+    {
+      path: '/lgbuildform',
+      name: 'lgbuildform',
+      component: lgbuildform
     },
     {
       path: '/test',

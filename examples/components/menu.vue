@@ -16,6 +16,7 @@
           <el-menu-item index="/lgtable">Table 表格</el-menu-item>
           <el-menu-item index="/lgexcel">Excel 导入/导出</el-menu-item>
           <el-menu-item index="/lgsimpletable">LgSimpleTable 简单表格</el-menu-item>
+          <el-menu-item index="/lgbuildform">LgBuildForm 表单生成控件</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <!--el-submenu index="2">
@@ -31,23 +32,22 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      defaultActive: '/test'
-    }
-  },
-  created () {
-    const path = this.$route.fullPath
-    this.defaultActive = path == '/' ? '/test' : path
-  },
-  methods: {
-  }
-}
+  export default {
+    data() {
+      return {
+        defaultActive: "/test"
+      };
+    },
+    created() {
+      const path = this.$route.fullPath;
+      this.defaultActive = path == "/" ? "/test" : path;
+    },
+    methods: {}
+  };
 </script>
 
 <style>
-.menu-model{
+.menu-model {
   height: 100%;
 }
 </style>

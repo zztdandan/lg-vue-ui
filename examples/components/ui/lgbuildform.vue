@@ -1,17 +1,17 @@
 <template>
     <div>
-      <lg-simple-table-md></lg-simple-table-md>
+      <lg-build-form-md></lg-build-form-md>
     </div>
 </template>
 
 <script>
 
-    import LgSimpleTableMd from "../docs/lgsimpletable.md";
+    import LgBuildFormMd from "../docs/lgbuildform.md";
 
     export default {
-      name: "lst",
+      name: "2nd",
       components: {
-        LgSimpleTableMd
+        LgBuildFormMd
       },
       data: function() {
         return {
