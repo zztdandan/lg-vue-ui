@@ -4,7 +4,7 @@
       v-if="formOptions"
       ref="searchForm"
       :disabled="formOptions.disabled"
-      :forms="formOptions.forms"
+      :form-items="formOptions.formItems"
       :size="formOptions.size"
       :fuzzy="formOptions.fuzzy"
       :inline="formOptions.inline"

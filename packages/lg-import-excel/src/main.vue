@@ -1,7 +1,7 @@
 <template>
   <div class="lg-import-excel">
     <input ref="lg-excel-input" class="lg-excel-input" type="file" accept=".xlsx, .xls, .csv" @change="handleClick">
-    <el-button :loading="loading" :size="size" :type="type" @click="handleUpload">{{btnText}}</el-button>
+    <el-button :loading="loading" :size="size" :type="type" @click="handleUpload">{{text}}</el-button>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   props: {
     size: String,
     type: String,
-    btnText: {
+    text: {
       type: String,
       default: '导入excel'
     },
@@ -25,7 +25,7 @@ export default {
       loading: false,
       excelData: {
         header: null,
-        results: null
+        data: null
       }
     };
   },
@@ -57,8 +57,8 @@ export default {
     },
     generateData({ header, results }) {
       this.excelData.header = header;
-      this.excelData.results = results;
-      console.log(this.excelData);
+      this.excelData.data = results;
+      // console.log(this.excelData);
       this.onSuccess && this.onSuccess(this.excelData);
     }
   }

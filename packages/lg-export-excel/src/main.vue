@@ -1,6 +1,6 @@
 <template>
   <div class="lg-export-excel">
-  <el-button :loading="loading" :size="size" :type="type" @click="handleClick">{{btnText}}</el-button>
+  <el-button :loading="loading" :size="size" :type="type" @click="handleClick">{{text}}</el-button>
 	<el-dialog title="导出" width="30%" :visible.sync="dialogVisible" :before-close="handleClose">
 	  <el-form ref="form" :model="form" label-width="80px">
 		  <el-form-item label="文件名称:">
@@ -9,6 +9,7 @@
 		  <el-form-item label="文件类型:">
 		    <el-radio-group v-model="form.type">
 		      <el-radio label="xlsx"></el-radio>
+          <el-radio label="xls"></el-radio>
 		      <el-radio label="csv"></el-radio>
 		    </el-radio-group>
 		  </el-form-item>
@@ -29,7 +30,7 @@ export default {
   props: {
     size: String,
     type: String,
-    btnText: {
+    text: {
       type: String,
       default: '导出excel'
     },
@@ -49,7 +50,7 @@ export default {
       loading: false,
       dialogVisible: false,
       form: {
-        name: '',
+        name: null,
         type: 'xlsx'
       }
     };

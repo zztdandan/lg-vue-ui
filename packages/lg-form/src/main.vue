@@ -3,27 +3,26 @@
   	<el-form ref="form" :model="params"
     :disabled="disabled" :inline="inline" 
     :label-position="labelPosition"
-    :label-width="labelWidth ? labelWidth : ''"
+    :label-width="labelWidth"
     @submit.native.prevent="searchHandler()">
     <el-form-item v-for="(form, index) in formItems"
       :prop="getProp(form, index)"
       :label="form.label" :key="index"
       :rules="form.rules || []"
-      :label-width="form.labelWidth ? form.labelWidth : ''">
-      <el-input v-if="form.type === 'input' || form.type === undefined"
+      :label-width="form.labelWidth ? form.labelWidth : labelWidth">
+      <el-input v-if="form.itemType === 'input' || form.itemType === undefined"
         v-model="params[form.modelValue]"
-        :type="form.type"
+        :type="form.type" :clearable="true"
         :size="form.size ? form.size : size"
         :readonly="form.readonly" :disabled="form.disabled"
-        :clearable="form.clearable"
         :placeholder="form.placeholder"
-        :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')"/>
-      <el-select v-else-if="form.type === 'select'"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')"/>
+      <el-select v-else-if="form.itemType === 'select'"
         v-model="params[form.modelValue]"
         :size="form.size ? form.size : size"
         :disabled="form.disabled"
         :placeholder="form.placeholder"
-        :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')">
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')">
         <el-option v-for="(option, optionIndex) in form.options"
         :key="optionIndex + '_local'"
           :value="(typeof option === 'object') ? option[form.valueKey || 'value'] : option"
@@ -32,64 +31,64 @@
           :value="(typeof op === 'object') ? op[form.valueKey || 'value'] : op"
           :label="(typeof op === 'object') ? op[form.labelKey || 'label'] : op" />
       </el-select>
-      <el-switch v-else-if="form.type === 'switch'"
+      <el-switch v-else-if="form.itemType === 'switch'"
       v-model="params[form.modelValue]"
       :disabled="form.disabled"
-      :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')">
+      :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')">
       </el-switch>
-      <el-radio-group v-else-if="form.type === 'radio'"
+      <el-radio-group v-else-if="form.itemType === 'radio'"
       v-model="params[form.modelValue]"
       :disabled="form.disabled"
-      :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')">
+      :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')">
         <el-radio v-for="(option, optionIndex) in form.options"
         :label="(typeof option === 'object') ? option[form.valueKey || 'value'] : option"
         :key="optionIndex" name="type">
         {{ (typeof option === 'object') ? option[form.labelKey || 'label'] : option }}
         </el-radio>
       </el-radio-group>
-      <el-checkbox-group v-else-if="form.type === 'checkbox'"
+      <el-checkbox-group v-else-if="form.itemType === 'checkbox'"
       v-model="params[form.modelValue]"
       :disabled="form.disabled"
-      :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')">
+      :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')">
         <el-checkbox v-for="(option, optionIndex) in form.options"
         :label="(typeof option === 'object') ? option[form.valueKey || 'value'] : option"
         :key="optionIndex" name="type">
         {{ (typeof option === 'object') ? option[form.labelKey || 'label'] : option }}
         </el-checkbox>
       </el-checkbox-group>
-      <el-date-picker v-else-if="form.type === 'date'"
+      <el-date-picker v-else-if="form.itemType === 'date'"
         v-model="params[form.modelValue]"
         type="date" :placeholder="form.placeholder"
         :size="form.size ? form.size : size"        
         :readonly="form.readonly" :disabled="form.disabled"
         :editable="form.editable"
-        :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')"
         :picker-options="form.pickerOptions || {}"/>
-      <el-date-picker v-else-if="form.type === 'datetime'"
+      <el-date-picker v-else-if="form.itemType === 'datetime'"
         v-model="params[form.modelValue]"
         type="datetime" :placeholder="form.placeholder"
         :size="form.size ? form.size : size"        
         :readonly="form.readonly" :disabled="form.disabled"
         :editable="form.editable"
-        :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')"
         :picker-options="form.pickerOptions || {}"/>
-      <el-date-picker v-else-if="form.type === 'daterange'"
+      <el-date-picker v-else-if="form.itemType === 'daterange'"
         v-model="params[form.modelValue]"
         :size="form.size ? form.size : size"
         type="daterange" @change="date => changeDate(date, form.prop[0], form.prop[1])"    
         :readonly="form.readonly" :disabled="form.disabled"
         :editable="form.editable" range-separator="至"
         :placeholder="form.placeholder"
-        :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')"
         :picker-options="form.pickerOptions || {}"/>
-      <el-date-picker v-else-if="form.type === 'datetimerange'"
+      <el-date-picker v-else-if="form.itemType === 'datetimerange'"
         v-model="params[form.modelValue]"
         :size="form.size ? form.size : size"
         type="datetimerange" @change="date => changeTime(date, form.prop[0], form.prop[1])"
         :readonly="form.readonly" :disabled="form.disabled"
         :editable="form.editable" range-separator="至"
         :placeholder="form.placeholder"
-        :style="itemStyle + (form.width ? `width: ${form.width}px;` : '')"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth};` : '')"
         :picker-options="form.pickerOptions || {}"/>
     </el-form-item>
     <el-form-item label="">
@@ -97,7 +96,7 @@
         :size="size" v-if="showResetBtn"
         @click="resetForm"
         :loading="submitLoading"
-        :style="btnBlank ? `margin-right: ${btnBlank}px;` : ''">
+        :style="btnBlankWidth ? `margin-right: ${btnBlankWidth};` : ''">
         {{ resetBtnText }}
       </el-button>        
       <el-button type="primary" :size="size"
@@ -131,9 +130,9 @@ export default {
       const propType = typeof v.prop;
       if (propType === 'string') {
         v.modelValue = v.prop;
-        if (v.type === 'switch') {
+        if (v.itemType === 'switch') {
           params[v.prop] = !!v.default;
-        } else if (v.type === 'checkbox') {
+        } else if (v.itemType === 'checkbox') {
           params[v.prop] = v.default || [];
         } else {
           params[v.prop] = v.default || '';
@@ -157,15 +156,15 @@ export default {
           fuzzyOps[vv] = v.fuzzy ? v.fuzzy : fuzzy;
         });
       }
-      if (v.type === 'daterange') {
+      if (v.itemType === 'daterange') {
         params[datePrefix + i] = v.default || '';
         v.modelValue = datePrefix + i;
-      } else if (v.type === 'datetimerange') {
+      } else if (v.itemType === 'datetimerange') {
         params[dateTimePrefix + i] = v.default || '';
         v.modelValue = dateTimePrefix + i;
       }
       // 远程获取
-      if (v.type === 'select' && (v.selectFetch || v.selectUrl)) {
+      if (v.itemType === 'select' && (v.selectFetch || v.selectUrl)) {
         const dataKey = selectOptionPrefix + i;
         this.selectOptions[dataKey] = [];
         const { $axios } = this;
@@ -206,9 +205,9 @@ export default {
   methods: {
     getProp(form, index) {
       const { datePrefix, dateTimePrefix } = this;
-      if (form.type === 'daterange') {
+      if (form.itemType === 'daterange') {
         return datePrefix + index;
-      } else if (form.type === 'datetimerange') {
+      } else if (form.itemType === 'datetimerange') {
         return dateTimePrefix + index;
       } else {
         return form.prop;
@@ -223,12 +222,13 @@ export default {
     searchHandler() {
       this.getParams((error, params) => {
         if (!error) {
-          const { submitHandler } = this;
-          if (submitHandler) {
-            submitHandler(params);
-          } else {
-            throw new Error('Need to set attribute: submitHandler !');
-          }
+          // const { submitHandler } = this;
+          // if (submitHandler) {
+          //  submitHandler(params);
+          // } else {
+          //  throw new Error('Need to set attribute: submitHandler !');
+          // }
+          this.$emit('submit', params);
         }
       });
     },

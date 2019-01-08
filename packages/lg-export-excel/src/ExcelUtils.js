@@ -61,17 +61,17 @@ export function export_json_to_excel({
   header,
   data,
   filename,
-  autoWidth = true,
-  bookType=  'xlsx'
+  bookType,
+  autoWidth= true
 } = {}) {
   /* original data */
   filename = filename || 'excel-list'
+  bookType = bookType || 'xlsx'
   data = [...data]
   data.unshift(header);
   var ws_name = "SheetJS";
   var wb = new Workbook(),
     ws = sheet_from_array_of_arrays(data);
-  console.log("1");
   if (autoWidth) {
     /*设置worksheet每列的最大宽度*/
     const colWidth = data.map(row => row.map(val => {
@@ -103,7 +103,6 @@ export function export_json_to_excel({
     }
     ws['!cols'] = result;
   }
-  console.log("12");
   /* add worksheet to workbook */
   wb.SheetNames.push(ws_name);
   wb.Sheets[ws_name] = ws;
@@ -113,7 +112,6 @@ export function export_json_to_excel({
     bookSST: false,
     type: 'binary'
   });
-  console.log("123");
   saveAs(new Blob([s2ab(wbout)], {
     type: "application/octet-stream"
   }), `${filename}.${bookType}`);

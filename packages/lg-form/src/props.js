@@ -29,16 +29,16 @@ export const formProps = {
     type: String,
     default: '查询'
   },
-  submitHandler: Function,
+  // submitHandler: Function,
   showResetBtn: {
     type: Boolean,
-    default: false
+    default: true
   },
   resetBtnText: {
     type: String,
     default: '重置'
   },
-  btnBlank: Number,
+  btnBlankWidth: String,
   formItems: {
     type: Array,
     required: true
@@ -46,10 +46,10 @@ export const formProps = {
 };
 
 function sizeValidator(value) {
-  const methodTypes = ['large', 'small', 'mini'];
+  const methodTypes = ['medium', 'small', 'mini'];
   const valid = methodTypes.indexOf(value.toLowerCase()) !== -1 || value === '';
   if (!valid) {
-    throw new Error('Size must be one of [\'large\', \'small\', \'mini\']');
+    throw new Error('Size must be one of [\'medium\', \'small\', \'mini\']');
   }
   return valid;
 }
