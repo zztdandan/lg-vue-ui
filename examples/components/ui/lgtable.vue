@@ -6,7 +6,7 @@
 
 <script>
 
-    import info from "../docs/info.md";
+    import info from "../docs/lgtable.md";
 
     export default {
       name: "lgtable",

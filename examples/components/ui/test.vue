@@ -2,21 +2,14 @@
   <div class="test">
     <h1>{{ msg }}</h1>
     <button-demo></button-demo>
-    <lg-form-table :form-options="formObj" :columns="cols" :data="list" size="mini"></lg-form-table>
-    <lg-form :forms='formData' :submitHandler="submit" labelPosition='left' :showResetBtn='true' :labelWidth=100 :itemWidth=350 :btnBlank=50 :disabled='false' :inline='true'></lg-form>
-    <lg-sample-table :show-checkbox='true' :showOperations='true' :data="list" size="mini">
-      <el-table-column slot="append" width=100>
-        <template slot-scope="scope">
-          <el-popover placement="left" width="100" trigger="hover">
-            <el-button type="success" size="mini">通过</el-button>
-            <el-button type="danger" size="mini" @click="deleteRow(scope.$index, list)">删除</el-button>
-            <el-button slot="reference" size="mini">操作</el-button>
-          </el-popover>
-        </template>
-      </el-table-column>
-    </lg-sample-table>
+    <el-form :model="numberValidateForm" label-width="100px" label-suffix="123">
+      <el-form-item label="年龄" prop="age">
+        <el-input type="age" v-model.number="numberValidateForm.age"></el-input>
+      </el-form-item>
+    </el-form>
+    <lg-form-table :form-options="formObj" :columns="cols" :data="list"></lg-form-table>
     <lg-export-excel :data="list"></lg-export-excel>
-    <lg-import-excel></lg-import-excel>
+    <lg-import-excel :on-success="onSuccess"></lg-import-excel>
   </div>
 </template>
 
@@ -127,28 +120,29 @@ export default {
       default: ['2018-11-08 00:00:00', '2018-11-09 00:00:00'],
       placeholder: '请选择时间范围'
     }];
-    let formObj = {'forms':formData, 'labelWidth':80, 'itemWidth':350, 'labelPosition':'left', 'inline':true};
+    let formObj = {formItems:formData, labelWidth:'80px', itemWidth:'350px', labelPosition:'left', inline:true};
     return {
-      input: '',
-      flag: false,
       msg: 'Welcome to Your Vue.js App',
+      numberValidateForm: {
+        age: ''
+      },
       formObj,
       formData,
       cols: [{
-        'prop': 'name',
-        'label': '名字'
+        prop: 'name',
+        label: '名字'
       },{
-        'prop': 'province',
-        'label': '省份'
+        prop: 'province',
+        label: '省份'
       },{
-        'prop': 'city',
-        'label': '城市'
+        prop: 'city',
+        label: '城市'
       },{
-        'prop': 'address',
-        'label': '地址'
+        prop: 'address',
+        label: '地址'
       },{
-        'prop': 'date',
-        'label': '日期'
+        prop: 'date',
+        label: '日期'
       }],
       list: [{
           name: '王小虎',
@@ -286,13 +280,8 @@ export default {
     };
   },
   methods: {
-    submit(params) {
-      console.log(params);
-      params.url = '1234';
-      console.log(this.formData);
-    },
-    deleteRow(index, rows) {
-      console.log(rows[index])
+    onSuccess(val){
+      console.log(val)
     }
   }
 };

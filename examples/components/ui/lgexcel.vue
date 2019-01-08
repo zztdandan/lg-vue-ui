@@ -6,10 +6,10 @@
 
 <script>
 
-    import info from "../docs/info.md";
+    import info from "../docs/lgexcel.md";
 
     export default {
-      name: "lgtable",
+      name: "lgexcel",
       components: {
         info
       },
