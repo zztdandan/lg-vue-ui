@@ -31,11 +31,12 @@
       CheckInput,
       AutoComInput,
       ButtonInput,
-      SelectInput
+      SelectInput,
+      DateInput
     },
     props: {
       //所有form的表单列表
-      FormArray: {
+      form_array: {
         type: Array,
         default: function() {
           return [];
@@ -43,7 +44,7 @@
       },
       //表单的唯一id标识
       FormId: { type: String, default: "SubForm" },
-      SyncData: {
+      sync_data: {
         type: Object,
         default: function() {
           return {};
@@ -57,13 +58,13 @@
     },
     created: function() {
       // console.log("初始化created");
-      // 初始化一次formData的数据,获得按照FormArray插入的原始数据。
-      // 注意，如果SyncData和formData同时有同一项的数字的话，以syncData的数字为初始化的标准
-      for (let one_item of this.FormArray) {
+      // 初始化一次formData的数据,获得按照form_array插入的原始数据。
+      // 注意，如果sync_data和formData同时有同一项的数字的话，以sync_data的数字为初始化的标准
+      for (let one_item of this.form_array) {
         // console.log("one_item=",one_item);
-        // console.log(this.SyncData[one_item.id]);
-        if (typeof this.SyncData[one_item.id] != "undefined") {
-          this.formData[one_item.id] = this.SyncData[one_item.id];
+        // console.log(this.sync_data[one_item.id]);
+        if (typeof this.sync_data[one_item.id] != "undefined") {
+          this.formData[one_item.id] = this.sync_data[one_item.id];
         } else if (typeof one_item.value != "undefined") {
           this.formData[one_item.id] = one_item.value;
         } else {
@@ -76,8 +77,8 @@
       //将传入的数据按列归类
       lineArray: function() {
         let c = new Array();
-        //先遍历一次输入的formArray，如果这个array存在line就插入c，如果不存在就默认为line1
-        for (var one_item of this.FormArray) {
+        //先遍历一次输入的form_array，如果这个array存在line就插入c，如果不存在就默认为line1
+        for (var one_item of this.form_array) {
           // console.log("one_item", one_item);
           const tyof = typeof one_item.line;
           if (tyof == "undefined") {
@@ -105,24 +106,24 @@
         return type != "button";
       },
       handlebtnClick(info) {
-        // console.log(info);
+        console.log(info);
         this.$emit(info);
       }
     },
 
     watch: {
-      SyncData: {
+      sync_data: {
         deep: true,
         handler: function(newval, oldval) {
-          // console.log("检测到数据改变SyncData");
+          // console.log("检测到数据改变sync_data");
           this.formData = newval;
-          // this.emit("update:SyncData",newval);
+          // this.emit("update:sync_data",newval);
         }
       },
       formData: {
         immediate: true,
         handler: function(n, o) {
-          this.$emit("update:SyncData", n);
+          this.$emit("update:sync_data", n);
           // console.log("检测到formData的改动");
         },
         deep: true
@@ -142,8 +143,8 @@
   padding: 0 0.25rem;
 }
 .flex-item {
-  margin: 0 0.25rem;
-  flex-grow: 0;
+  margin: 0 0.5rem;
+  /* flex-grow: 1; */
 }
 .no-visi {
   display: none;

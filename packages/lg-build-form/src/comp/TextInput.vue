@@ -45,10 +45,14 @@
     computed: {
       //判断label是否过长
       long_label() {
-        let label_length = parseInt(this.labelWidth);
-        if (label_length > 8) {
-          return true;
-        } else {
+        try {
+          let label_length = parseInt(this.labelWidth);
+          if (label_length > 8) {
+            return true;
+          } else {
+            return false;
+          }
+        } catch (e) {
           return false;
         }
       }
@@ -58,7 +62,7 @@
       if (this.Info.labelWidth) {
         this.labelWidth = this.Info.labelWidth;
       } else {
-        this.labelWidth = (this.Info.label.length+1)+"rem";
+        this.labelWidth = this.Info.label.length + 1 + "rem";
       }
       if (this.Info.addon) {
         this.addon = this.Info.addon;
@@ -68,11 +72,10 @@
 </script>
 
 <style scoped>
-.sub-title{
+.sub-title {
   text-align: center;
-color: #606266;
-    font-size: 1rem;
-
+  color: #606266;
+  font-size: 1rem;
 }
 </style>
 

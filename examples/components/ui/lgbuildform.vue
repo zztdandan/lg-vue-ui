@@ -9,7 +9,7 @@
     import LgBuildFormMd from "../docs/lgbuildform.md";
 
     export default {
-      name: "2nd",
+      name: "ndnd",
       components: {
         LgBuildFormMd
       },

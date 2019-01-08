@@ -41,12 +41,12 @@
         }
       },
       created: function() {
-        let that_labelWidth = "";
-        if (this.Info.labelWidth) {
-          this.labelWidth = this.Info.labelWidth;
-        } else {
-          this.labelWidth = "8rem";
-        }
+       let that_labelWidth = "";
+      if (this.Info.labelWidth) {
+        this.labelWidth = this.Info.labelWidth;
+      } else {
+        this.labelWidth = (this.Info.label.length+1)+"rem";
+      }
       }
     };
 </script>

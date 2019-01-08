@@ -3,8 +3,8 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import './assets/less/index.less'
-
+import './assets/less/index.less';
+import './assets/css/buttons.css';
 import demoBlock from './components/demoBlock.vue';
 Vue.component('demo-block', demoBlock);
 
@@ -15,6 +15,7 @@ Vue.use(ElementUI);
 import eExcel from '../packages/lg-export-excel/index.js';
 Vue.use(eExcel);
 import iExcel from '../packages/lg-import-excel/index.js';
+
 Vue.use(iExcel);
 
 import Lgui from '../src/index.js';
