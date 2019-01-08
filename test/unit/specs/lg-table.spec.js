@@ -1,14 +1,14 @@
 import { createTest, destroyVM } from '../util';
-import LgExportExcel from 'packages/lg-export-excel';
+import LgTable from 'packages/lg-table';
 
-describe('LgExportExcel', () => {
+describe('LgTable', () => {
   let vm;
   afterEach(() => {
     destroyVM(vm);
   });
 
   it('create', () => {
-    vm = createTest(LgExportExcel, true);
+    vm = createTest(LgTable, true);
     expect(vm.$el).to.exist;
   });
 });
