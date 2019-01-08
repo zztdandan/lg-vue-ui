@@ -2,8 +2,8 @@
 
 import ButtonDemo from '../packages/button-demo/index.js';
 import LgForm from '../packages/lg-form/index.js';
+import LgTable from '../packages/lg-table/index.js';
 import LgFormTable from '../packages/lg-form-table/index.js';
-import LgSampleTable from '../packages/lg-sample-table/index.js';
 import LgSimpleSearchBar from '../packages/lg-simple-search-bar/index.js';
 import LgSimpleTable from '../packages/lg-simple-table/index.js';
 import LgBuildForm from '../packages/lg-build-form/index.js';
@@ -11,8 +11,8 @@ import LgBuildForm from '../packages/lg-build-form/index.js';
 const components = [
   ButtonDemo,
   LgForm,
+  LgTable,
   LgFormTable,
-  LgSampleTable,
   LgSimpleSearchBar,
   LgSimpleTable,
   LgBuildForm
@@ -33,8 +33,8 @@ export default {
   install,
   ButtonDemo,
   LgForm,
+  LgTable,
   LgFormTable,
-  LgSampleTable,
   LgSimpleSearchBar,
   LgSimpleTable,
   LgBuildForm

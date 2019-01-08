@@ -1,10 +1,10 @@
 {
   "button-demo": "./packages/button-demo/index.js",
   "lg-form": "./packages/lg-form/index.js",
+  "lg-table": "./packages/lg-table/index.js",
   "lg-form-table": "./packages/lg-form-table/index.js",
   "lg-export-excel": "./packages/lg-export-excel/index.js",
   "lg-import-excel": "./packages/lg-import-excel/index.js",
-  "lg-sample-table": "./packages/lg-sample-table/index.js",
   "lg-simple-search-bar": "./packages/lg-simple-search-bar/index.js",
   "lg-simple-table": "./packages/lg-simple-table/index.js",
   "lg-build-form": "./packages/lg-build-form/index.js"
