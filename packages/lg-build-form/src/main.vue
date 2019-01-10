@@ -143,8 +143,8 @@
   padding: 0 0.25rem;
 }
 .flex-item {
-  margin: 0 0.5rem;
-  /* flex-grow: 1; */
+  margin: 0 0.25rem;
+  flex-grow: 1;
 }
 .no-visi {
   display: none;

@@ -1083,59 +1083,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.flex-row[data-v-5e47ca62] {
+.flex-row[data-v-2d360f3a] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1155,17 +1103,19 @@
       align-content: center;
   padding: 0 0.25rem;
 }
-.flex-item[data-v-5e47ca62] {
-  margin: 0 0.5rem;
-  /* flex-grow: 1; */
+.flex-item[data-v-2d360f3a] {
+  margin: 0 0.25rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
-.no-visi[data-v-5e47ca62] {
+.no-visi[data-v-2d360f3a] {
   display: none;
 }
-.is-visi[data-v-5e47ca62] {
+.is-visi[data-v-2d360f3a] {
   display: block;
 }
-.build-form[data-v-5e47ca62] {
+.build-form[data-v-2d360f3a] {
   margin: 0.5rem 1rem;
 }
 
@@ -1491,21 +1441,21 @@
 
 
 
-.dash-board-panel[data-v-6da6df0c] {
+.dash-board-panel[data-v-41904558] {
   margin: 0.3rem;
   border: solid 0px #e6a23c;
   -webkit-box-shadow: 0 0.1rem 0.5rem 0 rgba(10, 9, 7, 0.3);
           box-shadow: 0 0.1rem 0.5rem 0 rgba(10, 9, 7, 0.3);
   border-radius: 0.5rem;
 }
-.dash-board-title[data-v-6da6df0c] {
+.dash-board-title[data-v-41904558] {
   padding: 0.3rem 0.5rem;
   /* border-bottom: 1px solid #ebeef5; */
 }
-.dash-board-content[data-v-6da6df0c] {
+.dash-board-content[data-v-41904558] {
   padding: 0.3rem 0.5rem;
 }
-.dash-title[data-v-6da6df0c] {
+.dash-title[data-v-41904558] {
   padding: 0.3rem 0.5rem;
   font-size: 1.2rem;
 }

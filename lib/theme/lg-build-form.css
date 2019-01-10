@@ -1,5 +1,5 @@
 
-.flex-row[data-v-5e47ca62] {
+.flex-row[data-v-2d360f3a] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,17 +19,19 @@
       align-content: center;
   padding: 0 0.25rem;
 }
-.flex-item[data-v-5e47ca62] {
-  margin: 0 0.5rem;
-  /* flex-grow: 1; */
+.flex-item[data-v-2d360f3a] {
+  margin: 0 0.25rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
-.no-visi[data-v-5e47ca62] {
+.no-visi[data-v-2d360f3a] {
   display: none;
 }
-.is-visi[data-v-5e47ca62] {
+.is-visi[data-v-2d360f3a] {
   display: block;
 }
-.build-form[data-v-5e47ca62] {
+.build-form[data-v-2d360f3a] {
   margin: 0.5rem 1rem;
 }
 
