@@ -1,6 +1,11 @@
 # lg-vue-ui
 
-> A Component Library for LiuGang Steel Vue.js Program
+>柳州钢铁集团公司所用，基于element.ui封装的控件库，控件的api说明可以使用
+```
+npm run dev
+```
+运行的测试页面查看。该测试页面是各控件的文档。
+
 
 ## Build Setup
 
@@ -38,7 +43,7 @@ yarn add lg-vue-ui
 npm install lg-vue-ui --save
 ```
 
-## 使用
+## 在项目中使用
 
 ```js
 import Lgui from 'lg-vue-ui' // 引入组件库
