@@ -1,0 +1,25 @@
+
+.dash-board-panel[data-v-6da6df0c] {
+  margin: 0.3rem;
+  border: solid 0px #e6a23c;
+  -webkit-box-shadow: 0 0.1rem 0.5rem 0 rgba(10, 9, 7, 0.3);
+          box-shadow: 0 0.1rem 0.5rem 0 rgba(10, 9, 7, 0.3);
+  border-radius: 0.5rem;
+}
+.dash-board-title[data-v-6da6df0c] {
+  padding: 0.3rem 0.5rem;
+  /* border-bottom: 1px solid #ebeef5; */
+}
+.dash-board-content[data-v-6da6df0c] {
+  padding: 0.3rem 0.5rem;
+}
+.dash-title[data-v-6da6df0c] {
+  padding: 0.3rem 0.5rem;
+  font-size: 1.2rem;
+}
+
+.title-icon {
+    font-size: 1.3rem;
+}
+
+/*# sourceMappingURL=lg-dashboard.css.map*/

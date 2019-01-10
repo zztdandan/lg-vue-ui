@@ -7,5 +7,7 @@
   "lg-import-excel": "./packages/lg-import-excel/index.js",
   "lg-simple-search-bar": "./packages/lg-simple-search-bar/index.js",
   "lg-simple-table": "./packages/lg-simple-table/index.js",
-  "lg-build-form": "./packages/lg-build-form/index.js"
+  "lg-build-form": "./packages/lg-build-form/index.js",
+  "lg-md-render": "./packages/lg-md-render/index.js",
+  "lg-dashboard": "./packages/lg-dashboard/index.js"
 }

@@ -7,6 +7,8 @@ import LgFormTable from '../packages/lg-form-table/index.js';
 import LgSimpleSearchBar from '../packages/lg-simple-search-bar/index.js';
 import LgSimpleTable from '../packages/lg-simple-table/index.js';
 import LgBuildForm from '../packages/lg-build-form/index.js';
+import LgMdRender from '../packages/lg-md-render/index.js';
+import LgDashboard from '../packages/lg-dashboard/index.js';
 
 const components = [
   ButtonDemo,
@@ -15,7 +17,9 @@ const components = [
   LgFormTable,
   LgSimpleSearchBar,
   LgSimpleTable,
-  LgBuildForm
+  LgBuildForm,
+  LgMdRender,
+  LgDashboard
 ];
 
 const install = function(Vue, opts = {}) {
@@ -37,5 +41,7 @@ export default {
   LgFormTable,
   LgSimpleSearchBar,
   LgSimpleTable,
-  LgBuildForm
+  LgBuildForm,
+  LgMdRender,
+  LgDashboard
 };
